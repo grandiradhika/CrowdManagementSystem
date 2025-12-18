@@ -1,0 +1,203 @@
+<div class="dashboard-container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" >
+    <!-- BRAND -->
+    <div class="brand">
+      <img src="assets/Kloudspot_logo.svg" class="brand-logo" alt="kloudspot" />
+      <button class="menu-btn" aria-label="More options">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    </div>
+
+    <!-- NAV -->
+
+    <nav class="sidebar-nav">
+      <a
+        routerLink="/overview"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-item"
+      >
+        <span class="indicator"></span>
+
+        <span class="nav-icon">
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 10.5L12 3l9 7.5" />
+  <path d="M5 10v11h5v-6h4v6h5V10" />
+</svg>
+
+        </span>
+
+        <span class="nav-text">Overview</span>
+      </a>
+
+      <a routerLink="/crowd-entries" routerLinkActive="active" class="nav-item">
+        <span class="indicator"></span>
+
+        <span class="nav-icon">
+          <svg
+  width="20"
+  height="20"
+  viewBox="0 0 24 24"
+  class="menu-card-icon"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Rounded square -->
+  <rect
+    x="2"
+    y="2"
+    width="20"
+    height="20"
+    rx="6"
+    ry="6"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+  />
+
+  <!-- Diagonal line -->
+  <line
+    x1="15"
+    y1="15"
+    x2="9"
+    y2="9"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+  />
+
+  <!-- Arrow head (top-left) -->
+  <path
+    d="M9 12V9H12"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Arrow head (bottom-right) -->
+  <path
+    d="M15 12V15H12"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+
+        </span>
+
+        <span class="nav-text">Crowd Entries</span>
+      </a>
+    </nav>
+
+    <!-- LOGOUT -->
+    <div class="sidebar-logout" (click)="logout()">
+      <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 2v10" />
+  <path d="M5.5 5.5a8 8 0 1 0 13 0" />
+</svg>
+
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- HEADER -->
+    <header class="top-header">
+      <!-- LEFT -->
+      <div class="header-left">
+        <span class="title">Crowd Solutions</span>
+        <span class="divider">|</span>
+
+        <!-- AVENUE MALL -->
+        <div class="site-pill">
+          <!-- LOCATION ICON -->
+          <svg
+            class="location-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M12 21s6-5.33 6-10a6 6 0 1 0-12 0c0 4.67 6 10 6 10z" />
+            <circle cx="12" cy="11" r="2.5" />
+          </svg>
+
+          <span class="site-text">Avenue Mall</span>
+
+          <!-- DROPDOWN -->
+          <svg
+            class="caret-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="header-right">
+        <!-- LANGUAGE -->
+        <div class="lang-pill">
+          EN
+          <svg
+            class="caret-icon small"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+
+        <!-- ALERT NOTIFICATION -->
+        <div class="notification" (click)="showAlerts = true">
+          <svg
+            class="bell-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z" />
+            <path d="M18 16V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2z" />
+          </svg>
+          <span class="alert-dot"></span>
+        </div>
+
+        <!-- PROFILE -->
+        <img src="/assets/pexels-pixabay-45201.jpg" class="avatar" />
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+    <app-alerts [open]="showAlerts" (close)="showAlerts = false"></app-alerts>
+  </div>
+</div>

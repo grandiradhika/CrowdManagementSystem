@@ -1,0 +1,66 @@
+<div class="login-container">
+  <div class="overlay"></div>
+
+  <div class="content">
+
+    <!-- Left text -->
+    <div class="left-section">
+      <h1>
+        Welcome to the<br />
+        Crowd Management System
+      </h1>
+    </div>
+
+    <!-- Right login card -->
+    <div class="login-card">
+
+      <!-- Header -->
+      <div class="login-header">
+        <img
+          src="assets/Kloudspot_logo.svg"
+          alt="Kloudspot"
+          class="logo"
+        />
+      </div>
+
+      <!-- FORM-->
+      <form class="form-container" (ngSubmit)="login()">
+
+        <!-- Login ID -->
+        <div class="form-group">
+          <input
+            type="text"
+            required
+            [(ngModel)]="email"
+            name="email"
+          />
+          <label>Log In *</label>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group password">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            required
+            [(ngModel)]="password"
+            name="password"
+          />
+          <label>Password *</label>
+          <span
+            class="eye"
+            (click)="showPassword = !showPassword"
+          >👁</span>
+        </div>
+
+        <!-- Button -->
+        <button class="login-btn" type="submit">
+          Login
+        </button>
+
+        <p class="error" *ngIf="error">{{ error }}</p>
+
+      </form>
+    </div>
+
+  </div>
+</div>

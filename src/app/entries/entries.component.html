@@ -1,0 +1,120 @@
+<div class="crowd-entries-page">
+  <!-- HEADER -->
+  <div class="overview-header">
+    <h2>Overview</h2>
+
+    <button class="date-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24">
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="18"
+          rx="2"
+          ry="2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <line
+          x1="8"
+          y1="2"
+          x2="8"
+          y2="6"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <line
+          x1="16"
+          y1="2"
+          x2="16"
+          y2="6"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </svg>
+      Today
+    </button>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="entries-container">
+    <!-- Loading -->
+    <div *ngIf="loading" class="loading">Loading entries...</div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+
+    <!-- Table -->
+    <table *ngIf="!loading && entries.length" class="entries-table">
+      <thead>
+        <tr>
+          <th>Person</th>
+          <th>Gender</th>
+          <th>Zone</th>
+          <th>Severity</th>
+          <th>Entry Time</th>
+          <th>Exit Time</th>
+          <th>Dwell (min)</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let e of entries">
+          <td>{{ e.personName }}</td>
+          <td>{{ e.gender | titlecase }}</td>
+          <td>{{ e.zoneName }}</td>
+          <td>
+            <span class="severity" [ngClass]="e.severity">
+              {{ e.severity | titlecase }}
+            </span>
+          </td>
+          <td>{{ e.entryLocal }}</td>
+          <td>{{ e.exitLocal || "—" }}</td>
+          <td>{{ e.dwellMinutes ?? "—" }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- No Data -->
+    <div *ngIf="!loading && !entries.length" class="no-data">
+      No records found
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper" *ngIf="totalPages > 1">
+      <div class="pagination">
+        <!-- Previous -->
+        <button class="nav" [disabled]="pageNumber === 1" (click)="goToPrev()">
+        </button>
+
+        <!-- Page numbers -->
+        <ng-container *ngFor="let p of getVisiblePages()">
+          <button
+            *ngIf="p !== '...'; else dots"
+            class="page"
+            [class.active]="p === pageNumber"
+            (click)="goToPageSafe(p)"
+          >
+            {{ p }}
+          </button>
+
+          <ng-template #dots>
+            <span class="dots">…</span>
+          </ng-template>
+        </ng-container>
+
+        <!-- Next -->
+        <button
+          class="nav"
+          [disabled]="pageNumber === totalPages"
+          (click)="goToNext()"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

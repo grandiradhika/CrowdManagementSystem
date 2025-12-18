@@ -1,0 +1,204 @@
+/* Full screen background */
+.login-container {
+  height: 100vh;
+  width: 100%;
+  background-image: url('/assets/office_image.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Main content */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+/* Left welcome text */
+.left-section h1 {
+  color: #ffffff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  max-width: 450px;
+  line-height: 40px;
+  letter-spacing: 0.02em;
+  margin-left: 100px;
+}
+
+
+/* FULL CARD */
+.login-card {
+  width: 360px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  margin-right: 110px;
+
+}
+
+/* HEADER */
+.login-header {
+  height: 110px;
+  background: url('/assets/Vector.png'),
+  radial-gradient(
+    130.14% 50% at 50% 50%,
+    #0A5D5C 0%,
+    #282829 100%
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* FORM CONTAINER */
+.form-container {
+  padding: 22px 24px 26px;
+}
+
+/* FLOATING INPUT */
+.form-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 42px;
+  padding: 14px 36px 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.form-group label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #8a8a8a;
+  background: white;
+  padding: 0 6px;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+/* FLOATING EFFECT */
+.form-group input:focus + label,
+.form-group input:valid + label {
+  top: -6px;
+  font-size: 11px;
+  color: #009490;
+}
+
+/* FOCUS */
+.form-group input:focus {
+  outline: none;
+  border-color: #00a99d;
+}
+
+/* PASSWORD EYE */
+.form-group.password .eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #777;
+  cursor: pointer;
+}
+
+/* BUTTON */
+.login-btn {
+  width: 100%;
+  height: 40px;
+  background: #009490;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #009187;
+}
+
+
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 32px;
+  }
+
+  .left-section h1 {
+    margin-left: 0;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .login-card {
+    margin-right: 0;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .content {
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  /* Hide left text */
+  .left-section {
+    display: none;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 380px;
+    margin: 0;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .login-header {
+    height: 90px;
+  }
+
+  .form-container {
+    padding: 20px 16px 24px;
+  }
+
+  .login-btn {
+    height: 42px;
+    font-size: 15px;
+  }
+}
